@@ -1,0 +1,36 @@
+.services{
+    margin-top: 50px;   
+}
+.title{
+    font-size: 35px;
+    font-weight: 700;
+    color: #404145;
+}
+.slide_item{
+    position: relative;
+    min-height: 345px;
+    max-width: 250px;
+    cursor: pointer;
+}
+.mySlide{
+    margin-top: 50px;
+}
+.slide_item_img{
+    width: 100%;
+    position: absolute;
+}
+.slide_item_desc, .slide_item_name {
+    position: absolute;
+    color: white;
+    left: 20px;
+}
+.slide_item_desc{ 
+    font-size: 14px;
+    font-weight: 500;
+    top: 15px
+}
+.slide_item_name{
+    font-size: 25px;
+    font-weight: 700;
+    top: 30px
+}

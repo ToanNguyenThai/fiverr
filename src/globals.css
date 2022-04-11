@@ -1,0 +1,34 @@
+:root{
+  --main-color: #1dbf73;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.swiper-button-prev, .swiper-button-next{
+  top: 45% !important;
+  z-index: 99 !important;
+  color: black !important;
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 100%;
+  background-color: white;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%) !important;
+}
+.swiper-button-prev{
+  left: 0px !important;
+}
+.swiper-button-next{
+  right: 0px !important;
+}
+.swiper-button-prev:after, .swiper-button-next:after{
+  transform: scale(0.4);
+  font-weight: bolder !important; 
+}
+/* Font */
+@import url('http://fonts.cdnfonts.com/css/domaine-display');
