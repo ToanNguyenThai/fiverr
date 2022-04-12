@@ -9,7 +9,7 @@ export default function Header() {
                 <div className='container'>
                     <div className={`${style.nav} d-flex justify-content-between align-items-center`}>
                         <a className={style.logo} href='#'>
-                            <h1>fiverr.</h1>
+                            <h1>fiverr    <span className={style.dot}>.</span></h1>
                         </a>
                         <ul className={`${style.nav_list} d-flex align-items-center`}>
                             <li className={style.nav_list_item}>Become a Seller</li>
