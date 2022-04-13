@@ -1,9 +1,10 @@
 import './globals.css';
 import Homepage from './components/Homepage';
+import Navbar from './components/Navbar';
 function App() {
 	return (
 		<div className="App">
-			<Homepage></Homepage>
+			<Navbar></Navbar>
 		</div>
 	);
 }
