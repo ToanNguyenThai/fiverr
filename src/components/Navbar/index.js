@@ -23,6 +23,7 @@ export default function Navbar() {
                     /* chọn những job có tên và có nhiều sub job để */
                     arr.push(item)
             });
+
             setNavItem(arr)
 
         }
@@ -59,10 +60,21 @@ export default function Navbar() {
                         {
                             navItem.map((item, key) => (
                                 <>
+
                                     <div onMouseEnter={() => setCheckName(item.name)} onMouseLeave={() => setCheckName('')} className={`${style.nav_item}`} key={key}>{item.name}
                                         {
                                             item.name === checkName
-                                                ? <div className={`${style.nav_item_popup}`}></div>
+                                                ? <div onMouseEnter={() => setCheckName(item.name)} onMouseLeave={() => setCheckName('')} className={`${style.nav_item_popup}`}>
+                                                    <div className={`${style.popup_list} row`}>
+                                                        {
+                                                            item.subTypeJobs.map((subItem, index) => (
+                                                                <div key={index} className={`${style.subItem} col-6`}>
+                                                                    {subItem.name}
+                                                                </div>
+                                                            ))
+                                                        }
+                                                    </div>
+                                                </div>
                                                 : ''
                                         }
                                     </div>
