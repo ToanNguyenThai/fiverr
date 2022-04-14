@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import { DataContext } from './Context';
 import App from './App';
 
 
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+        <DataContext.Consumer>
+            <App />
+        </DataContext.Consumer>
     </React.StrictMode>,
     document.getElementById('root')
 );

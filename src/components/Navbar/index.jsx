@@ -8,7 +8,7 @@ export default function Navbar() {
     const [checkName, setCheckName] = useState(false)
 
     useEffect(() => {
-        const getJob = async () => {
+        const getJobType = async () => {
             const result = await axios({
                 method: 'get',
                 url: `${api_url}/type-jobs`,
@@ -16,7 +16,7 @@ export default function Navbar() {
                     'tokenByClass': tokenByClass
                 }
             })
-            console.log(result.data);
+
             let arr = []
             result.data.forEach(item => {
                 if (item.name !== NaN && item.subTypeJobs.length > 2)
@@ -27,7 +27,10 @@ export default function Navbar() {
             setNavItem(arr)
 
         }
-        getJob()
+
+
+        getJobType()
+
     }, []);
     return (
         <>
@@ -58,17 +61,17 @@ export default function Navbar() {
                 <div className={`${style.nav_options}`}>
                     <div className='container d-flex justify-content-between align-items-center'>
                         {
-                            navItem.map((item, key) => (
+                            navItem.map((item) => (
                                 <>
 
-                                    <div onMouseEnter={() => setCheckName(item.name)} onMouseLeave={() => setCheckName('')} className={`${style.nav_item}`} key={key}>{item.name}
+                                    <div onMouseEnter={() => setCheckName(item.name)} onMouseLeave={() => setCheckName('')} className={`${style.nav_item}`} key={item.name}>{item.name}
                                         {
                                             item.name === checkName
                                                 ? <div onMouseEnter={() => setCheckName(item.name)} onMouseLeave={() => setCheckName('')} className={`${style.nav_item_popup}`}>
                                                     <div className={`${style.popup_list} row`}>
                                                         {
-                                                            item.subTypeJobs.map((subItem, index) => (
-                                                                <div key={index} className={`${style.subItem} col-6`}>
+                                                            item.subTypeJobs.map((subItem) => (
+                                                                <div key={subItem.name} className={`${style.subItem} col-6`}>
                                                                     {subItem.name}
                                                                 </div>
                                                             ))

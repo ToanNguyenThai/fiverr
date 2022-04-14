@@ -1,10 +1,10 @@
 import './globals.css';
 import Homepage from './components/Homepage';
-import Navbar from './components/Navbar';
+import JobList from './components/JobList';
 function App() {
 	return (
 		<div className="App">
-			<Navbar></Navbar>
+			<JobList></JobList>
 		</div>
 	);
 }
