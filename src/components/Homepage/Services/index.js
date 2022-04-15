@@ -5,7 +5,7 @@ import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { service } from './data';
-
+import { Link } from 'react-router-dom';
 
 export default function Services() {
     return (
@@ -28,11 +28,14 @@ export default function Services() {
                             service.map(item => (
                                 <SwiperSlide key={item.id}>
                                     <div className='col'>
-                                        <div className={style.slide_item} >
-                                            <img className={style.slide_item_img} src={item.img}></img>
-                                            <h3 className={style.slide_item_desc}>{item.desc}</h3>
-                                            <h3 className={style.slide_item_name}>{item.name}</h3>
-                                        </div>
+                                        <Link to={`/JobList/${item.name}`}>
+                                            <div className={style.slide_item} >
+                                                <img className={style.slide_item_img} src={item.img}></img>
+                                                <h3 className={style.slide_item_desc}>{item.desc}</h3>
+                                                <h3 className={style.slide_item_name}>{item.name}</h3>
+                                            </div>
+                                        </Link>
+
                                     </div>
 
 

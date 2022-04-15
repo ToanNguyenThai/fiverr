@@ -11,31 +11,32 @@ export default function JobList() {
     let { name } = useParams()
     const [job, setJob] = useState()
     const mounted = useRef();
+    console.log(name);
     useEffect(() => {
-        if (!mounted.current) {
-            const getJob = async () => {
-                const result = await axios({
-                    method: 'get',
-                    url: `${api_url}/jobs/by-name?name=${name}`,
-                    headers: {
-                        'tokenByClass': tokenByClass
-                    }
-                })
-                console.log(result);
-                var arr = []
-                result.data.forEach(item => {
-                    arr.push(item)
-                })
-                setJob(arr)
-
-            }
-            getJob()
+        /* if (!mounted.current) {
+            
             mounted.current = true;
         } else {
-            // do componentDidUpdate logic
+            
+        } */
+
+        const getJob = async () => {
+            const result = await axios({
+                method: 'get',
+                url: `${api_url}/jobs/by-name?name=${name}`,
+                headers: {
+                    'tokenByClass': tokenByClass
+                }
+            })
+            console.log(result);
+            var arr = []
+            result.data.forEach(item => {
+                arr.push(item)
+            })
+            setJob(arr)
+
         }
-
-
+        getJob()
     }, []);
 
     if (job !== undefined) {
@@ -67,8 +68,10 @@ export default function JobList() {
                 </div>
 
             </>
-
         )
     }
+    else return (
+        <h3>CAN NOT FIND YOUR SERVICE</h3>
+    )
 
 }
