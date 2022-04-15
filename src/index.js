@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { DataContext } from './Context';
+import { JobProvider } from './context/JobContext'
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 
 
 ReactDOM.render(
     <React.StrictMode>
-        <DataContext.Consumer>
-            <App />
-        </DataContext.Consumer>
+        <JobProvider>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </JobProvider>
     </React.StrictMode>,
     document.getElementById('root')
 );

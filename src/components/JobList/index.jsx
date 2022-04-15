@@ -1,41 +1,47 @@
 import React from 'react'
-import { useEffect, useState, useContext } from 'react'
-import Navbar from '../Navbar'
-import Footer from '../Footer'
+import { useEffect, useState, useRef } from 'react'
+import { useParams } from 'react-router-dom'
+
 import style from './joblist.module.css'
 import axios from 'axios'
 import { api_url, tokenByClass } from '../../config'
-import { faKipSign } from '@fortawesome/free-solid-svg-icons'
+
 
 export default function JobList() {
-    const [value] = useContext()
+    let { name } = useParams()
     const [job, setJob] = useState()
+    const mounted = useRef();
     useEffect(() => {
-        const getJob = async () => {
-            const result = await axios({
-                method: 'get',
-                url: `${api_url}/jobs`,
-                headers: {
-                    'tokenByClass': tokenByClass
-                }
-            })
-
-
-            var arr = []
-            result.data.forEach(item => {
-                if (item.subType !== null && item.subType !== undefined && item.subType.name === 'Gaming')
+        if (!mounted.current) {
+            const getJob = async () => {
+                const result = await axios({
+                    method: 'get',
+                    url: `${api_url}/jobs/by-name?name=${name}`,
+                    headers: {
+                        'tokenByClass': tokenByClass
+                    }
+                })
+                console.log(result);
+                var arr = []
+                result.data.forEach(item => {
                     arr.push(item)
-            })
-            setJob(arr)
+                })
+                setJob(arr)
 
+            }
+            getJob()
+            mounted.current = true;
+        } else {
+            // do componentDidUpdate logic
         }
-        getJob()
+
+
     }, []);
-    console.log(job);
+
     if (job !== undefined) {
         return (
             <>
-                <Navbar></Navbar>
+
                 <div className={`${style.cardContainer} container`}>
 
                     <div className='row'>
@@ -59,7 +65,7 @@ export default function JobList() {
                     </div>
 
                 </div>
-                <Footer></Footer>
+
             </>
 
         )

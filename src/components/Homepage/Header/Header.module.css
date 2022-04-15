@@ -107,6 +107,14 @@
 .options_list {
     display: inline-block;
 }
+.options_list a {
+    text-decoration: none;
+    color : white;
+}
+.options_list a :hover {
+    color: black;
+    background-color: #fff;
+}
 .options_item {
     font-size: 15px;
     display: inline-block;
@@ -119,7 +127,6 @@
     cursor: pointer;
     transition: all 0.3s linear;
 }
-.options_item:hover {
-    background-color: #fff;
-    color: black;
-}
+
+
+

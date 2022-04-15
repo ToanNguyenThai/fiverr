@@ -11,7 +11,6 @@ export default function Homepage() {
             <Services></Services>
             <CheckList></CheckList>
             <Marketplace></Marketplace>
-            <Footer></Footer>
         </>
     )
 }

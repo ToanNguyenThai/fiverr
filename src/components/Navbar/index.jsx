@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import style from './navbar.module.css'
 import axios from 'axios'
 import { api_url, tokenByClass } from '../../config'
+import { Link } from 'react-router-dom'
 export default function Navbar() {
     const [navItem, setNavItem] = useState([])
     const [popUp, setPopUp] = useState(false)
@@ -38,9 +39,9 @@ export default function Navbar() {
             <div className={style.Header}>
                 <div className='container'>
                     <div className={`${style.nav} d-flex justify-content-between align-items-center`}>
-                        <a className={style.logo} href='#'>
+                        <Link className={style.logo} to='/'>
                             <h1>fiverr<span className={style.dot}>.</span></h1>
-                        </a>
+                        </Link>
 
                         <form className={`${style.myForm} d-flex`}>
                             <div className={style.searchArea} >
@@ -71,9 +72,9 @@ export default function Navbar() {
                                                     <div className={`${style.popup_list} row`}>
                                                         {
                                                             item.subTypeJobs.map((subItem) => (
-                                                                <div key={subItem.name} className={`${style.subItem} col-6`}>
+                                                                <Link to={`/JobList/${subItem.name}`} key={subItem.name} className={`${style.subItem} col-6`}>
                                                                     {subItem.name}
-                                                                </div>
+                                                                </Link>
                                                             ))
                                                         }
                                                     </div>
