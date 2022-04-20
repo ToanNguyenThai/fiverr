@@ -1,9 +1,9 @@
 import React from 'react'
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import style from './Header.module.css'
 import { Link } from 'react-router-dom'
 export default function Header() {
-
+    const [value, setValue] = useState('')
     return (
         <>
 
@@ -25,9 +25,12 @@ export default function Header() {
                         <form className={`${style.myForm} d-flex`}>
                             <div className={style.searchArea} >
                                 <i className="fas fa-search"></i>
-                                <input className={style.searchBar} type="text" placeholder='Try "building mobile app' />
+                                <input onChange={(e) => setValue(e.target.value)} className={style.searchBar} type="text" placeholder='Try "building mobile app' />
                             </div>
-                            <button className={style.btn}>Search</button>
+                            <Link to={`/JobList/${value}`}>
+                                <button className={style.btn}>Search</button>
+                            </Link>
+
                         </form>
 
 

@@ -1,26 +1,21 @@
 import React from 'react'
 import { useEffect, useState, useRef } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 
 import style from './joblist.module.css'
 import axios from 'axios'
 import { api_url, tokenByClass } from '../../config'
+import useForceUpdate from 'use-force-update';
 
 
 export default function JobList() {
     let { name } = useParams()
     const [job, setJob] = useState()
-    const mounted = useRef();
-    console.log(name);
+    const location = useLocation()
     useEffect(() => {
-        /* if (!mounted.current) {
-            
-            mounted.current = true;
-        } else {
-            
-        } */
-
+        console.log(location);
         const getJob = async () => {
+
             const result = await axios({
                 method: 'get',
                 url: `${api_url}/jobs/by-name?name=${name}`,
@@ -33,10 +28,14 @@ export default function JobList() {
             result.data.forEach(item => {
                 arr.push(item)
             })
+            console.log(arr);
             setJob(arr)
 
         }
+        console.log(job);
         getJob()
+
+
     }, []);
 
     if (job !== undefined) {

@@ -3,10 +3,12 @@ import style from './navbar.module.css'
 import axios from 'axios'
 import { api_url, tokenByClass } from '../../config'
 import { Link } from 'react-router-dom'
+import useForceUpdate from 'use-force-update';
 export default function Navbar() {
     const [navItem, setNavItem] = useState([])
-    const [popUp, setPopUp] = useState(false)
+
     const [checkName, setCheckName] = useState(false)
+    const [value, setValue] = useState('')
 
     useEffect(() => {
         const getJobType = async () => {
@@ -31,8 +33,8 @@ export default function Navbar() {
 
 
         getJobType()
-
     }, []);
+
     return (
         <>
 
@@ -46,9 +48,11 @@ export default function Navbar() {
                         <form className={`${style.myForm} d-flex`}>
                             <div className={style.searchArea} >
                                 <i className="fas fa-search"></i>
-                                <input className={style.searchBar} type="text" placeholder='Try "building mobile app' />
+                                <input onChange={(e) => setValue(e.target.value)} className={style.searchBar} type="text" placeholder='Try "building mobile app' />
                             </div>
-                            <button className={style.btn}>Search</button>
+                            <Link to={`/JobList/${value}`}>
+                                <button className={style.btn}>Search</button>
+                            </Link>
                         </form>
 
                         <ul className={`${style.nav_list} d-flex align-items-center`}>
