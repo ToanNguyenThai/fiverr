@@ -1,19 +1,18 @@
 import React from 'react'
-import { useEffect, useState, useRef } from 'react'
-import { useParams, useLocation } from 'react-router-dom'
-
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import style from './joblist.module.css'
 import axios from 'axios'
 import { api_url, tokenByClass } from '../../config'
-import useForceUpdate from 'use-force-update';
 
 
 export default function JobList() {
     let { name } = useParams()
     const [job, setJob] = useState()
-    const location = useLocation()
+
     useEffect(() => {
-        console.log(location);
+
         const getJob = async () => {
 
             const result = await axios({
@@ -23,54 +22,61 @@ export default function JobList() {
                     'tokenByClass': tokenByClass
                 }
             })
-            console.log(result);
+
             var arr = []
             result.data.forEach(item => {
                 arr.push(item)
             })
             console.log(arr);
             setJob(arr)
-
         }
-        console.log(job);
         getJob()
-
-
-    }, []);
+    }, [name]); // khi biến name thay đổi thì update lại giao diện
 
     if (job !== undefined) {
-        return (
-            <>
+        if (job.length > 0) {
+            return (
+                <>
 
-                <div className={`${style.cardContainer} container`}>
+                    <div className={`${style.cardContainer} container`}>
+                        <div className={style.navLink}>
+                            <Link to='/'>FIVERR </Link>
+                            <span className={style.arrow}>{`>`}</span>
+                            <Link className={style.linkName} >{name}</Link>
+                        </div>
+                        <h1 className={style.jobTitle}>{name}</h1>
+                        <div className={style.jobCount}>{job.length} services available</div>
+                        <div className='row'>
+                            {
+                                job.map((item) => (
 
-                    <div className='row'>
-                        {
-                            job.map((item) => (
+                                    <div className='col-4'>
+                                        <div className={`${style.card} card`} >
+                                            <img className={`${style.card_img} card-img-top`} src={item.image} alt="Card image cap" />
+                                            <div className={`${style.card_body} card-body`}>
+                                                <h5 className={`${style.card_title} card-title`} >Card title</h5>
+                                                <p className={`${style.card_text} card-text`} >{item.name}</p>
+                                                <div className={style.separate}></div>
+                                                <p className={`${style.card_price} card-text`}>STARTING AT <span className={style.price}>${item.price}</span></p>
 
-                                <div className='col-4'>
-                                    <div className={`${style.card} card`} >
-                                        <img className="card-img-top" src={item.image} alt="Card image cap" />
-                                        <div className="card-body">
-                                            <h5 className="card-title">Card title</h5>
-                                            <p className="card-text">{item.name}</p>
-                                            <p className="card-text">{item.price}</p>
+                                            </div>
 
                                         </div>
                                     </div>
-                                </div>
 
-                            ))
-                        }
+                                ))
+                            }
+                        </div>
+
                     </div>
 
-                </div>
-
-            </>
+                </>
+            )
+        }
+        else return (
+            <h1 className={style.testBlock}>CAN NOT FIND YOUR SERVICE ...</h1>
         )
     }
-    else return (
-        <h3>CAN NOT FIND YOUR SERVICE</h3>
-    )
+
 
 }
