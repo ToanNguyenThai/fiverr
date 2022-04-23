@@ -1,7 +1,7 @@
 .Header {
     width: 100%;
     min-height: 600px;
-    background-image: url("../../../img/homepage/header_carousel.webp");
+    background-image: url("../../../../img/homepage/header_carousel.webp");
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import style from './joblist.module.css'
 import axios from 'axios'
-import { api_url, tokenByClass } from '../../config'
+import { api_url, tokenByClass } from '../../../config'
 
 
 export default function JobList() {

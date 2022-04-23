@@ -1,12 +1,12 @@
-import graphic from '../../../img/homepage/graphic.svg'
-import marketing from '../../../img/homepage/marketing.svg'
-import writing from '../../../img/homepage/writing.svg'
-import video from '../../../img/homepage/video.svg'
-import music from '../../../img/homepage/music.svg'
-import programming from '../../../img/homepage/programming.svg'
-import business from '../../../img/homepage/business.svg'
-import lifestyle from '../../../img/homepage/lifestyle.svg'
-import data from '../../../img/homepage/data.svg'
+import graphic from '../../../../img/homepage/graphic.svg'
+import marketing from '../../../../img/homepage/marketing.svg'
+import writing from '../../../../img/homepage/writing.svg'
+import video from '../../../../img/homepage/video.svg'
+import music from '../../../../img/homepage/music.svg'
+import programming from '../../../../img/homepage/programming.svg'
+import business from '../../../../img/homepage/business.svg'
+import lifestyle from '../../../../img/homepage/lifestyle.svg'
+import data from '../../../../img/homepage/data.svg'
 
 export const marketplace = [
     {

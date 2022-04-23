@@ -4,8 +4,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle } from '@fortawesome/free-regular-svg-icons'
-import videoBG from '../../../img/homepage/videoBG.webp'
-import playBtn from '../../../img/homepage/playBtn.png'
+import videoBG from '../../../../img/homepage/videoBG.webp'
+import playBtn from '../../../../img/homepage/playBtn.png'
 library.add(faCheckCircle);
 
 export default function CheckList() {

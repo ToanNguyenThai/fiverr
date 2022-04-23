@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react'
 import style from './navbar.module.css'
 import axios from 'axios'
-import { api_url, tokenByClass } from '../../config'
+import { api_url, tokenByClass } from '../../../config'
 import { Link } from 'react-router-dom'
-import useForceUpdate from 'use-force-update';
+
 export default function Navbar() {
     const [navItem, setNavItem] = useState([])
 

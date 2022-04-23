@@ -1,10 +1,10 @@
 import './globals.css';
-import Homepage from './components/Homepage';
-import JobList from './components/JobList';
-
+import Homepage from './components/User/Homepage';
+import JobList from './components/User/JobList';
+import Job from './components/User/Job';
 import { WithNavbar } from './RouteTemplate/UserNavbar/WithNavbar';
 import { WithoutNavbar } from './RouteTemplate/UserNavbar/WithoutNavbar';
-import { Switch, Route, Router } from "react-router-dom";
+import { Switch, Router } from "react-router-dom";
 
 import { createBrowserHistory } from 'history'
 export const history = createBrowserHistory()
@@ -15,6 +15,7 @@ function App() {
 				<Switch>
 					<WithoutNavbar path="/" exact Component={Homepage}></WithoutNavbar>
 					<WithNavbar path='/JobList/:name' Component={JobList}></WithNavbar>
+					<WithNavbar path='/Job/:name' Component={Job}></WithNavbar>
 				</Switch>
 			</Router>
 

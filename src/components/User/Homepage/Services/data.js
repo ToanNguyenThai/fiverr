@@ -1,13 +1,13 @@
-import logodesign from '../../../img/homepage/logodesign.webp'
-import wordpress from '../../../img/homepage/wordpress.webp'
-import voiceover from '../../../img/homepage/voiceover.webp'
-import videoexplain from '../../../img/homepage/videoexplain.jpg'
-import socialmedia from '../../../img/homepage/socialmedia.webp'
-import seo from '../../../img/homepage/seo.webp'
-import ill from '../../../img/homepage/ill.webp'
-import translation from '../../../img/homepage/translation.webp'
-import dataentry from '../../../img/homepage/dataentry.webp'
-import bookcover from '../../../img/homepage/bookcover.webp'
+import logodesign from '../../../../img/homepage/logodesign.webp'
+import wordpress from '../../../../img/homepage/wordpress.webp'
+import voiceover from '../../../../img/homepage/voiceover.webp'
+import videoexplain from '../../../../img/homepage/videoexplain.jpg'
+import socialmedia from '../../../../img/homepage/socialmedia.webp'
+import seo from '../../../../img/homepage/seo.webp'
+import ill from '../../../../img/homepage/ill.webp'
+import translation from '../../../../img/homepage/translation.webp'
+import dataentry from '../../../../img/homepage/dataentry.webp'
+import bookcover from '../../../../img/homepage/bookcover.webp'
 
 export const service = [
     {
