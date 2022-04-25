@@ -12,7 +12,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+a{
+  text-decoration: none !important;
+}
 .swiper-button-prev, .swiper-button-next{
   top: 45% !important;
   z-index: 99 !important;

@@ -18,7 +18,9 @@
     color: #74767e;
     cursor: pointer;
     transition: all 0.2s linear;
+    display: block;
 }
+
 .list_item:hover {
     color: var(--main-color);
 }

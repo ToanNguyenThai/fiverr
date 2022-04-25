@@ -9,7 +9,7 @@ import { api_url, tokenByClass } from '../../../config'
 
 export default function JobList() {
     let { name } = useParams()
-    const [job, setJob] = useState()
+    const [job, setJob] = useState([])
 
     useEffect(() => {
 
@@ -23,12 +23,11 @@ export default function JobList() {
                 }
             })
 
-            var arr = []
             result.data.forEach(item => {
-                arr.push(item)
+                setJob(prevArray => [...prevArray, item])
             })
-            console.log(arr);
-            setJob(arr)
+
+
         }
         getJob()
     }, [name]); // khi biến name thay đổi thì update lại giao diện

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import style from './footer.module.css'
 export default function Footer() {
     return (
@@ -8,18 +9,18 @@ export default function Footer() {
                     <div className={`${style.Categories} `}>
                         <h5 className={style.title}>Categories</h5>
                         <ul className={style.list}>
-                            <li className={style.list_item}>Graphics &amp; Design
-                            </li>
-                            <li className={style.list_item}>Digital Marketing
-                            </li>
-                            <li className={style.list_item}>Writing &amp; Translation</li>
-                            <li className={style.list_item}>Video &amp; Animation</li>
-                            <li className={style.list_item}>Music &amp; Audio</li>
-                            <li className={style.list_item}>Programming &amp; Tech</li>
-                            <li className={style.list_item}>Data</li>
-                            <li className={style.list_item}>Business</li>
-                            <li className={style.list_item}>Lifestyle</li>
-                            <li className={style.list_item}>Sitemap</li>
+                            <Link to={`/Job/${`Graphics Design`}`} className={style.list_item}>Graphics &amp; Design
+                            </Link>
+                            <Link to={`/Job/${`Digital Marketing`}`} className={style.list_item}>Digital Marketing
+                            </Link>
+                            <Link to={`/Job/${`Writing Translation`}`} className={style.list_item}>Writing &amp; Translation</Link>
+                            <Link to={`/Job/${`Video Animation`}`} className={style.list_item}>Video &amp; Animation</Link>
+                            <Link to={`/Job/${`Music Audio`}`} className={style.list_item}>Music &amp; Audio</Link>
+                            <Link to={`/Job/${`Programming Tech`}`} className={style.list_item}>Programming &amp; Tech</Link>
+                            <Link to={`/Job/${`Data`}`} className={style.list_item}>Data</Link>
+                            <Link to={`/Job/${`Business`}`} className={style.list_item}>Business</Link>
+                            <Link to={`/Job/${`Lifestyle`}`} className={style.list_item}>Lifestyle</Link>
+                            <Link to={`/Job/${`Sitemap`}`} className={style.list_item}>Sitemap</Link>
                         </ul>
                     </div>
                     <div className={`${style.About} `}>
