@@ -2,15 +2,20 @@ import React from 'react'
 import { useState } from 'react'
 import style from './signup.module.css'
 import { Link } from 'react-router-dom'
+import useMediaQuery from '../../../customHooks/useMediaQuery'
 export default function SignUp() {
+    const isDesktop = useMediaQuery("(min-width:1140px)");
     return (
 
         <div className="container-fluid">
             <div className="row no-gutter">
                 {/* The image half */}
-                <div className={`${style.bg_image} col-md-6 d-none d-md-flex `} />
+                {isDesktop
+                    ? <div className={`${style.bg_image} col-md-6 d-none d-md-flex `} />
+                    : ""
+                }
                 {/* The content half */}
-                <div className="col-md-6 bg-light">
+                <div className="col-md-12 col-xl-6 bg-light">
                     <div className={`${style.signup} d-flex align-items-center py-5 `}>
                         {/* Demo content*/}
                         <div className="container">

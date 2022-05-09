@@ -2,7 +2,10 @@ import React from 'react'
 import { useState } from 'react'
 import style from './login.module.css'
 import { Link } from 'react-router-dom'
+import useMediaQuery from '../../../customHooks/useMediaQuery'
 export default function Login() {
+    const isDesktop = useMediaQuery("(min-width:1140px)");
+
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
     const handleSubmit = (e) => {
@@ -15,14 +18,18 @@ export default function Login() {
         <div className="container-fluid">
             <div className="row no-gutter">
                 {/* The image half */}
-                <div className={`${style.bg_image} col-md-6 d-none d-md-flex `} />
+                {isDesktop
+                    ? <div className={`${style.bg_image} col-md-6 d-none d-md-flex `} />
+                    : ""
+                }
+
                 {/* The content half */}
-                <div className="col-md-6 bg-light">
+                <div className="col-md-12 col-xl-6 bg-light">
                     <div className={`${style.login} d-flex align-items-center py-5 `}>
                         {/* Demo content*/}
                         <div className="container">
                             <div className="row">
-                                <div className="col-lg-10 col-xl-7 mx-auto">
+                                <div className="col-lg-10 col-xl-7  mx-auto">
                                     <h3 className={`${style.title} display-4`} >Login</h3>
 
                                     <form className={style.myForm}>
