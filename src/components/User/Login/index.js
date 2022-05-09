@@ -6,12 +6,16 @@ import useMediaQuery from '../../../customHooks/useMediaQuery'
 export default function Login() {
     const isDesktop = useMediaQuery("(min-width:1140px)");
 
-    const [userName, setUserName] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(userName);
-        console.log(password);
+        const account = {
+            "email": email,
+            "password": password,
+        }
+
+        console.log(account);
     }
     return (
 
@@ -34,7 +38,7 @@ export default function Login() {
 
                                     <form className={style.myForm}>
                                         <div className="form-group mb-3">
-                                            <input onChange={e => setUserName(e.target.value)} id="inputEmail" type="email" placeholder="Email address" required autoFocus className="form-control  border-0 shadow-sm px-4" />
+                                            <input onChange={e => setEmail(e.target.value)} id="inputEmail" type="email" placeholder="Email address" required autoFocus className="form-control  border-0 shadow-sm px-4" />
                                         </div>
                                         <div className="form-group mb-3">
                                             <input onChange={e => setPassword(e.target.value)} id="inputPassword" type="password" placeholder="Password" required className="form-control  border-0 shadow-sm px-4" />

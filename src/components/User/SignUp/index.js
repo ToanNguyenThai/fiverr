@@ -2,9 +2,45 @@ import React from 'react'
 import { useState } from 'react'
 import style from './signup.module.css'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { api_url, tokenByClass } from '../../../config'
 import useMediaQuery from '../../../customHooks/useMediaQuery'
 export default function SignUp() {
     const isDesktop = useMediaQuery("(min-width:1140px)");
+    const [userName, setUserName] = useState('')
+    const [phone, setPhone] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [rePassword, setRePassword] = useState('')
+    const [fullName, setFullName] = useState('')
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const account = {
+            "first_name": fullName,
+            "last_name": fullName,
+            "email": email,
+            "password": password,
+            "phone": phone,
+            "skill": [],
+            "certification": [],
+            "birthday": "",
+            "gender": true,
+            "type": "",
+            "address": ""
+        }
+        axios({
+            method: 'POST',
+            url: `${api_url}/auth/signup`,
+            headers: {
+                'tokenByClass': tokenByClass
+            },
+            data: account
+        });
+        var form = document.querySelector(".myForm");
+        form.reset();  // Reset all form data
+        alert("Đăng kí thành công")
+        console.log(account);
+    }
     return (
 
         <div className="container-fluid">
@@ -25,26 +61,26 @@ export default function SignUp() {
 
                                     <form className={style.myForm}>
                                         <div className="form-group mb-3">
-                                            <input id="Username" type="text" placeholder="User name" required autofocus className="form-control  border-0 shadow-sm px-4" />
+                                            <input onChange={(e) => setUserName(e.target.value)} id="Username" type="text" placeholder="User name" required autofocus className="form-control  border-0 shadow-sm px-4" />
                                         </div>
                                         <div className="form-group mb-3">
-                                            <input id="inputPassword" type="password" placeholder="Password" required className="form-control  border-0 shadow-sm px-4 text-primary" />
+                                            <input onChange={(e) => setPassword(e.target.value)} id="inputPassword" type="password" placeholder="Password" required className="form-control  border-0 shadow-sm px-4 text-primary" />
                                         </div>
                                         <div className="form-group mb-3">
-                                            <input id="RePassword" type="password" placeholder="Re-enter password" required className="form-control  border-0 shadow-sm px-4 text-primary" />
+                                            <input onChange={(e) => setRePassword(e.target.value)} id="RePassword" type="password" placeholder="Re-enter password" required className="form-control  border-0 shadow-sm px-4 text-primary" />
                                         </div>
                                         <div className="form-group mb-3">
-                                            <input id="fullName" type="text" placeholder="Full name" required autofocus className="form-control  border-0 shadow-sm px-4" />
+                                            <input onChange={(e) => setFullName(e.target.value)} id="fullName" type="text" placeholder="Full name" required autofocus className="form-control  border-0 shadow-sm px-4" />
                                         </div>
                                         <div className="form-group mb-3">
-                                            <input id="inputEmail" type="email" placeholder="Email address" required autofocus className="form-control  border-0 shadow-sm px-4" />
+                                            <input onChange={(e) => setEmail(e.target.value)} id="inputEmail" type="email" placeholder="Email address" required autofocus className="form-control  border-0 shadow-sm px-4" />
                                         </div>
 
                                         <div className="form-group mb-3">
-                                            <input id="phone" type="text" placeholder="Phone number" required autofocus className="form-control  border-0 shadow-sm px-4" />
+                                            <input onChange={(e) => setPhone(e.target.value)} id="phone" type="text" placeholder="Phone number" required autofocus className="form-control  border-0 shadow-sm px-4" />
                                         </div>
 
-                                        <button type="submit" className={`${style.btn} btn  btn-block text-uppercase mb-2  shadow-sm`}>Sign in</button>
+                                        <button onClick={handleSubmit} className={`${style.btn} btn  btn-block text-uppercase mb-2  shadow-sm`}>Sign up</button>
 
                                     </form>
                                     <div className={style.footer_nav}>
