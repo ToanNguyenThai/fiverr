@@ -1,0 +1,51 @@
+.bg_image {
+    background-image: url('https://bootstrapious.com/i/snippets/sn-page-split/bg.jpg');
+    background-size: cover;
+    background-position: center center;
+}
+
+.login {
+    min-height: 100vh;
+}
+
+
+
+.title {
+
+    font-weight: 600;
+}
+
+.myForm {
+    margin-top: 50px;
+}
+
+.btn {
+    margin-top: 30px;
+    background-color: var(--main-color);
+    color: white;
+    font-weight: 600;
+}
+
+.btn:hover {
+    color: var(--main-color);
+    border-color: var(--main-color);
+    border-width: 2px;
+    border-style: solid;
+    background-color: #fff;
+}
+
+.footer_nav {
+
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer_nav a {
+    font-weight: 500;
+    color: #7d7d7e;
+}
+
+.footer_nav a:hover {
+    color: var(--main-color);
+}

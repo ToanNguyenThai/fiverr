@@ -29,6 +29,7 @@ export default function Job() {
         getJobId()
     }, [name])
     useEffect(() => {
+
         if (jobId !== undefined) {
             jobId.forEach(item => {
                 const getJob = async () => {

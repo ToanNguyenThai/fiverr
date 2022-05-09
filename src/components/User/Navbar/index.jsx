@@ -57,8 +57,18 @@ export default function Navbar() {
 
                         <ul className={`${style.nav_list} d-flex align-items-center`}>
                             <li className={style.nav_list_item}>Become a Seller</li>
-                            <li className={style.nav_list_item}>Sign In</li>
-                            <li className={`${style.nav_list_item} ${style.join}`}>Join</li>
+
+                            <li className={style.nav_list_item}>
+                                <Link to='/Login'>
+                                    Sign In
+                                </Link>
+
+                            </li>
+                            <li className={`${style.nav_list_item} ${style.join}`}>
+                                <Link to='/SignUp'>
+                                    Join
+                                </Link>
+                            </li>
                         </ul>
 
                     </div>

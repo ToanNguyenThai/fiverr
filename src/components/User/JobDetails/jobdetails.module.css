@@ -1,0 +1,62 @@
+.jobdetails {
+    margin-top: 123.5px;
+}
+
+.navLink {
+    margin-top: 50px;
+}
+
+.navLink a {
+
+    font-weight: 500;
+}
+
+.arrow {
+    padding: 0 10px;
+}
+
+.jobTitle {
+    font-size: 29px;
+    padding-top: 20px;
+    font-weight: 700;
+
+}
+
+.separate {
+    margin-top: 20px;
+    height: 1px;
+    background-color: #eaeaec;
+}
+
+.image {
+    width: auto;
+    height: 400px;
+    margin-top: 50px;
+}
+
+.right_container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.purchase {
+    margin-top: 50px;
+    width: 400px;
+    height: 400px;
+    border-style: solid;
+    border-color: #eaeaec;
+    border-width: 1px;
+    padding: 20px;
+}
+
+.purchase_btn {
+    width: 100%;
+    height: 40px;
+    background-color: var(--main-color);
+    color: white;
+    font-weight: 600;
+    font-size: 17px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
