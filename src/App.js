@@ -5,6 +5,7 @@ import Job from './components/User/Job';
 import JobDetails from './components/User/JobDetails';
 import Login from './components/User/Login';
 import SignUp from './components/User/SignUp';
+import Profile from './components/User/Profile';
 import { WithNavbar } from './RouteTemplate/UserNavbar/WithNavbar';
 import { WithoutNavbar } from './RouteTemplate/UserNavbar/WithoutNavbar';
 import { Nothing } from './RouteTemplate/UserNavbar/Nothing';
@@ -23,6 +24,7 @@ function App() {
 					<WithNavbar path='/JobDetails/:name/:id' Component={JobDetails}></WithNavbar>
 					<Nothing path="/Login" exact Component={Login}></Nothing>
 					<Nothing path="/SignUp" exact Component={SignUp}></Nothing>
+					<WithNavbar path='/Profile/:id' Component={Profile}></WithNavbar>
 				</Switch>
 			</Router>
 

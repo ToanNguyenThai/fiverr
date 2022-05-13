@@ -35,11 +35,15 @@ export default function SignUp() {
                 'tokenByClass': tokenByClass
             },
             data: account
+        }).then((response) => {
+            if (response.status == 200) {
+                alert('Đăng ký thành công !')
+
+            }
+        }, (error) => {
+            alert('Đăng ký thất bại !')
         });
-        var form = document.querySelector(".myForm");
-        form.reset();  // Reset all form data
-        alert("Đăng kí thành công")
-        console.log(account);
+
     }
     return (
 
