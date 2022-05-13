@@ -23,10 +23,10 @@ export default function SignUp() {
             "phone": phone,
             "skill": [],
             "certification": [],
-            "birthday": "",
+            "birthday": "2022-01-01",
             "gender": true,
-            "type": "",
-            "address": ""
+            "type": "CLIENT",
+            "address": "Ho Chi Minh City"
         }
         axios({
             method: 'POST',

@@ -1,7 +1,8 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 import style from './navbar.module.css'
 import axios from 'axios'
 import { api_url, tokenByClass } from '../../../config'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 export default function Navbar() {
@@ -10,6 +11,8 @@ export default function Navbar() {
     const [checkName, setCheckName] = useState(false)
     const [value, setValue] = useState('')
 
+    const [showDropList, setShowDropList] = useState(false)
+    const loginAccount = useSelector((state) => state.loginAccount)
     useEffect(() => {
         const getJobType = async () => {
             const result = await axios({
@@ -55,21 +58,45 @@ export default function Navbar() {
                             </Link>
                         </form>
 
-                        <ul className={`${style.nav_list} d-flex align-items-center`}>
-                            <li className={style.nav_list_item}>Become a Seller</li>
+                        {
+                            Object.keys(loginAccount).length === 0
+                                ?
+                                <ul className={`${style.nav_list} d-flex align-items-center`}>
+                                    <li className={style.nav_list_item}>Become a Seller</li>
+                                    <li className={style.nav_list_item}>
+                                        <Link to='/Login'>
+                                            Sign In
+                                        </Link></li>
+                                    <li className={`${style.nav_list_item} ${style.join}`}>
+                                        <Link to='/SignUp'>
+                                            Join
+                                        </Link>
+                                    </li>
+                                </ul>
+                                :
+                                <ul className={`${style.nav_list} d-flex align-items-center`}>
+                                    <li className={style.nav_list_item}>Welcome back, {loginAccount.name}</li>
+                                    <li onClick={() => setShowDropList(!showDropList)} className={`${style.nav_list_item} ${style.avatar_area}`}>
+                                        {
+                                            loginAccount.avatar !== undefined
+                                                ? <img src={loginAccount.avatar} ></img>
+                                                : <img src='https://i.picsum.photos/id/106/2592/1728.jpg?hmac=E1-3Hac5ffuCVwYwexdHImxbMFRsv83exZ2EhlYxkgY'></img>
 
-                            <li className={style.nav_list_item}>
-                                <Link to='/Login'>
-                                    Sign In
-                                </Link>
+                                        }
+                                        {
+                                            showDropList ?
+                                                <div className={style.dropList}>
+                                                    <div className={style.dropList_item}>View Profile</div>
+                                                    <div className={style.dropList_item}>Sign Out</div>
+                                                </div>
+                                                : ''
+                                        }
 
-                            </li>
-                            <li className={`${style.nav_list_item} ${style.join}`}>
-                                <Link to='/SignUp'>
-                                    Join
-                                </Link>
-                            </li>
-                        </ul>
+                                    </li>
+
+
+                                </ul>
+                        }
 
                     </div>
                 </div>

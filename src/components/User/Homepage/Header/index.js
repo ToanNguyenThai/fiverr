@@ -2,31 +2,68 @@ import React from 'react'
 import { useState } from 'react'
 import style from './Header.module.css'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 export default function Header() {
     const [value, setValue] = useState('')
+    const [showDropList, setShowDropList] = useState(false)
+    const loginAccount = useSelector((state) => state.loginAccount)
+
     return (
         <>
 
             <div className={style.Header}>
                 <div className='container'>
+
                     <div className={`${style.nav} d-flex justify-content-between align-items-center`}>
                         <Link className={style.logo} to='/'>
                             <h1>fiverr    <span className={style.dot}>.</span></h1>
                         </Link>
-                        <ul className={`${style.nav_list} d-flex align-items-center`}>
-                            <li className={style.nav_list_item}>Become a Seller</li>
-                            <li className={style.nav_list_item}>
-                                <Link to='/Login'>
-                                    Sign In
-                                </Link></li>
-                            <li className={`${style.nav_list_item} ${style.join}`}>
-                                <Link to='/SignUp'>
-                                    Join
-                                </Link>
-                            </li>
-                        </ul>
+                        {
+                            Object.keys(loginAccount).length === 0
+                                ?
+                                <ul className={`${style.nav_list} d-flex align-items-center`}>
+                                    <li className={style.nav_list_item}>Become a Seller</li>
+                                    <li className={style.nav_list_item}>
+                                        <Link to='/Login'>
+                                            Sign In
+                                        </Link></li>
+                                    <li className={`${style.nav_list_item} ${style.join}`}>
+                                        <Link to='/SignUp'>
+                                            Join
+                                        </Link>
+                                    </li>
+                                </ul>
+                                :
+                                <ul className={`${style.nav_list} d-flex align-items-center`}>
+                                    <li className={style.nav_list_item}>Welcome back, {loginAccount.name}</li>
+                                    <li onClick={() => setShowDropList(!showDropList)} className={`${style.nav_list_item} ${style.avatar_area}`}>
+                                        {
+                                            loginAccount.avatar !== undefined
+                                                ? <img src={loginAccount.avatar} ></img>
+                                                : <img src='https://i.picsum.photos/id/106/2592/1728.jpg?hmac=E1-3Hac5ffuCVwYwexdHImxbMFRsv83exZ2EhlYxkgY'></img>
+
+                                        }
+                                        {
+                                            showDropList ?
+                                                <div className={style.dropList}>
+                                                    <div className={style.dropList_item}>View Profile</div>
+                                                    <div className={style.dropList_item}>Sign Out</div>
+                                                </div>
+                                                : ''
+                                        }
+
+                                    </li>
+
+
+                                </ul>
+                        }
+
 
                     </div>
+
+
+
+
                     <div className={style.action}>
                         <h1 className={style.text}>Find the perfect <span className={style.text_italic}> <i>freelance</i></span>  <br></br> services for your business</h1>
                         <form className={`${style.myForm} d-flex`}>

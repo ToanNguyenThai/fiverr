@@ -1,21 +1,48 @@
 import React from 'react'
 import { useState } from 'react'
 import style from './login.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+
+import { api_url, tokenByClass } from '../../../config'
+import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import { actionLogin } from '../../../redux/actions'
 import useMediaQuery from '../../../customHooks/useMediaQuery'
 export default function Login() {
+    const dispatch = useDispatch()
+    const history = useHistory()
     const isDesktop = useMediaQuery("(min-width:1140px)");
-
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const handleSubmit = (e) => {
         e.preventDefault()
-        const account = {
-            "email": email,
-            "password": password,
-        }
+        if (email !== '' && password !== '') {
+            const account = {
+                "email": email,
+                "password": password,
+            }
 
-        console.log(account);
+            axios({
+                method: 'POST',
+                url: `${api_url}/auth/signin`,
+                headers: {
+                    'tokenByClass': tokenByClass
+                },
+                data: account
+            }).then((response) => {
+                console.log(response.data.user);
+                if (response.status == 200) {
+                    alert('Đăng nhập thành công !')
+                    dispatch(actionLogin(response.data.user))
+                }
+                history.goBack()
+
+            }, (error) => {
+                alert('Đăng nhập thất bại !')
+            });
+        }
+        else alert('Vui lòng nhập đầy đủ thông tin')
+
     }
     return (
 
