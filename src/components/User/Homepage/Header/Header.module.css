@@ -50,6 +50,9 @@
     color: white;
 }
 
+.nav_list_item a:hover {
+    color: var(--main-color);
+}
 
 
 .join {

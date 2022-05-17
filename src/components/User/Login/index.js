@@ -30,12 +30,15 @@ export default function Login() {
                 },
                 data: account
             }).then((response) => {
-                console.log(response.data.user);
+                console.log(response.data.user.role);
                 if (response.status == 200) {
                     alert('Đăng nhập thành công !')
                     dispatch(actionLogin(response.data.user))
                 }
-                history.goBack()
+                /* history.goBack() */
+                if (response.data.user.role === 'CLIENT')
+                    history.push({ pathname: '/Admin' })
+                else history.push({ pathname: '/' })
 
             }, (error) => {
                 alert('Đăng nhập thất bại !')

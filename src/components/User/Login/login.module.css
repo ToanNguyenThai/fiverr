@@ -21,17 +21,17 @@
 
 .btn {
     margin-top: 30px;
-    background-color: var(--main-color);
-    color: white;
-    font-weight: 600;
+    background-color: var(--main-color) !important;
+    color: white !important;
+    font-weight: 600 !important;
 }
 
 .btn:hover {
-    color: var(--main-color);
-    border-color: var(--main-color);
-    border-width: 2px;
-    border-style: solid;
-    background-color: #fff;
+    color: var(--main-color) !important;
+    border-color: var(--main-color) !important;
+    border-width: 2px !important;
+    border-style: solid !important;
+    background-color: #fff !important;
 }
 
 .footer_nav {
