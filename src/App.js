@@ -7,9 +7,11 @@ import Login from './components/User/Login';
 import SignUp from './components/User/SignUp';
 import Profile from './components/User/Profile';
 import Admin from './components/Admin';
+import AddAdmin from './components/Admin/AddAdmin';
 import { WithNavbar } from './RouteTemplate/UserNavbar/WithNavbar';
 import { WithoutNavbar } from './RouteTemplate/UserNavbar/WithoutNavbar';
 import { Nothing } from './RouteTemplate/UserNavbar/Nothing';
+import { SideAndHeader } from './RouteTemplate/Admin/SideAndHeader';
 import { Switch, Router } from "react-router-dom";
 
 import { createBrowserHistory } from 'history'
@@ -27,6 +29,7 @@ function App() {
 					<Nothing path="/SignUp" exact Component={SignUp}></Nothing>
 					<WithNavbar path='/Profile/:id' Component={Profile}></WithNavbar>
 					<Nothing path='/Admin' Component={Admin}></Nothing>
+					<SideAndHeader path='/AddAdmin' Component={AddAdmin}></SideAndHeader>
 				</Switch>
 			</Router>
 

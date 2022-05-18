@@ -1,0 +1,14 @@
+.myForm {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.btn {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.whiteBG {
+    background-color: white !important;
+}

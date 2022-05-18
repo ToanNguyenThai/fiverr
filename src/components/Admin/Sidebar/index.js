@@ -10,7 +10,7 @@ export default function Sidebar() {
     return (
         <aside className="main-sidebar sidebar-dark-primary elevation-4">
 
-            <div className="font-weight-bold text-center brand-link">DASHBOARD</div>
+            <Link to='/Admin' className="font-weight-bold text-center brand-link">DASHBOARD</Link>
 
 
 
@@ -43,7 +43,7 @@ export default function Sidebar() {
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link to='' className="nav-link">
+                                            <Link to='/AddAdmin' className="nav-link">
                                                 <i className="far fa-circle nav-icon" />
                                                 <p>Thêm quản trị viên</p>
                                             </Link>
