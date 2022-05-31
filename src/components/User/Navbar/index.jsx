@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import style from './navbar.module.css'
+
 import axios from 'axios'
 import { api_url, tokenByClass } from '../../../config'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { actionLogout } from '../../../redux/actions'
 import { Link } from 'react-router-dom'
-
+import style from './navbar.module.css'
 export default function Navbar() {
+    const dispatch = useDispatch()
+    const history = useHistory()
     const [navItem, setNavItem] = useState([])
 
     const [checkName, setCheckName] = useState(false)
@@ -13,6 +17,10 @@ export default function Navbar() {
 
     const [showDropList, setShowDropList] = useState(false)
     const loginAccount = useSelector((state) => state.loginAccount)
+    const handleLogout = () => {
+        dispatch(actionLogout({}))
+        history.push({ pathname: '/Login' })
+    }
     useEffect(() => {
         const getJobType = async () => {
             const result = await axios({
@@ -75,7 +83,7 @@ export default function Navbar() {
                                 </ul>
                                 :
                                 <ul className={`${style.nav_list} d-flex align-items-center`}>
-                                    <li className={style.nav_list_item}>Welcome back, {loginAccount.name}</li>
+                                    <li className={style.nav_list_item}>Welcome back, {loginAccount.phone}</li>
                                     <li onClick={() => setShowDropList(!showDropList)} className={`${style.nav_list_item} ${style.avatar_area}`}>
                                         {
                                             loginAccount.avatar !== undefined
@@ -87,7 +95,7 @@ export default function Navbar() {
                                             showDropList ?
                                                 <div className={style.dropList}>
                                                     <div className={style.dropList_item}>View Profile</div>
-                                                    <div className={style.dropList_item}>Sign Out</div>
+                                                    <div onClick={() => handleLogout()} className={style.dropList_item}>Sign Out</div>
                                                 </div>
                                                 : ''
                                         }

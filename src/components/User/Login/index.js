@@ -37,8 +37,8 @@ export default function Login() {
                 }
                 /* history.goBack() */
                 if (response.data.user.role === 'CLIENT')
-                    history.push({ pathname: '/Admin' })
-                else history.push({ pathname: '/' })
+                    history.push({ pathname: '/' })
+                else history.push({ pathname: '/Admin' })
 
             }, (error) => {
                 alert('Đăng nhập thất bại !')

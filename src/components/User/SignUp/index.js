@@ -84,7 +84,7 @@ export default function SignUp() {
                                             <input onChange={(e) => setPhone(e.target.value)} id="phone" type="text" placeholder="Phone number" required autofocus className="form-control  border-0 shadow-sm px-4" />
                                         </div>
 
-                                        <button onClick={handleSubmit} className={`${style.btn} btn  btn-block text-uppercase mb-2  shadow-sm`}>Sign up</button>
+                                        <button onClick={handleSubmit} className={`${style.btn} btn btn-block text-uppercase text-bold mb-2  shadow-sm btn-success`}>Sign up</button>
 
                                     </form>
                                     <div className={style.footer_nav}>

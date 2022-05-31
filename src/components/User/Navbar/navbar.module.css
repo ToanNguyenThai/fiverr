@@ -89,7 +89,8 @@
     z-index: 9999;
     position: absolute;
     width: 130px;
-    background-color: #a3a6b2;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: #fff;
     padding: 10px;
     border: black;
     right: 1px;

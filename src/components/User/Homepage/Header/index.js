@@ -2,12 +2,19 @@ import React from 'react'
 import { useState } from 'react'
 import style from './Header.module.css'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { actionLogout } from '../../../../redux/actions'
+import { useHistory } from 'react-router-dom'
 export default function Header() {
+    const dispatch = useDispatch()
+    const history = useHistory()
     const [value, setValue] = useState('')
     const [showDropList, setShowDropList] = useState(false)
     const loginAccount = useSelector((state) => state.loginAccount)
-
+    const handleLogout = () => {
+        dispatch(actionLogout({}))
+        history.push({ pathname: '/Login' })
+    }
     return (
         <>
 
@@ -27,15 +34,17 @@ export default function Header() {
                                         <Link to='/Login'>
                                             Sign In
                                         </Link></li>
-                                    <li className={`${style.nav_list_item} ${style.join}`}>
-                                        <Link to='/SignUp'>
+                                    <Link to='/SignUp'>
+                                        <li className={`${style.nav_list_item} ${style.join}`}>
+
                                             Join
-                                        </Link>
-                                    </li>
+
+                                        </li>
+                                    </Link>
                                 </ul>
                                 :
                                 <ul className={`${style.nav_list} d-flex align-items-center`}>
-                                    <li className={style.nav_list_item}>Welcome back, {loginAccount.name}</li>
+                                    <li className={style.nav_list_item}>Welcome back, {loginAccount.phone}</li>
                                     <li onClick={() => setShowDropList(!showDropList)} className={`${style.nav_list_item} ${style.avatar_area}`}>
                                         {
                                             loginAccount.avatar !== undefined
@@ -47,7 +56,7 @@ export default function Header() {
                                             showDropList ?
                                                 <div className={style.dropList}>
                                                     <div className={style.dropList_item}>View Profile</div>
-                                                    <div className={style.dropList_item}>Sign Out</div>
+                                                    <div onClick={() => handleLogout()} className={style.dropList_item}>Sign Out</div>
                                                 </div>
                                                 : ''
                                         }
