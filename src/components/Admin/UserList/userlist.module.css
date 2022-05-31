@@ -1,0 +1,73 @@
+.userList {
+    margin-left: 250px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    width: 100%;
+    padding: 0 160px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inputArea input {
+    height: 36px;
+    margin-right: 20px;
+}
+
+.myTable {
+
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    margin-top: 20px;
+}
+
+.myTable thead {
+    background-color: #343a40;
+    color: white;
+
+}
+
+
+
+td,
+th {
+    height: 55px;
+    padding-left: 20px;
+}
+
+.myTable tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.pageArea {
+    margin: 0 auto;
+    display: flex;
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.pageDirect {
+    padding: 0 20px;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.pageNumber {
+    color: blue;
+    font-size: 20px;
+}
+
+.infoBtn {
+    margin-left: 30px;
+}
+
+.action {
+    display: flex;
+}

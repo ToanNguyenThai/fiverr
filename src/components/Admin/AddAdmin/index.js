@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 import style from './addAdmin.module.css'
+
 import { api_url, tokenByClass, token } from '../../../config'
 export default function AddAdmin() {
     const [fullName, setFullName] = useState('')
@@ -10,6 +11,7 @@ export default function AddAdmin() {
     const [password, setPassword] = useState('')
     const handleSubmit = (e) => {
         e.preventDefault()
+
         const account = {
             "name": fullName,
             "email": email,
@@ -20,15 +22,18 @@ export default function AddAdmin() {
             "role": "ADMIN",
             "skill": [],
             "certification": []
+
         }
+        console.log(account);
         axios({
             method: 'POST',
             url: `${api_url}/users`,
             headers: {
                 'token': token,
                 'tokenByClass': tokenByClass
-
             },
+
+
             data: account
         }).then((response) => {
             if (response.status == 200) {
@@ -36,6 +41,7 @@ export default function AddAdmin() {
 
             }
         }, (error) => {
+            console.log(error);
             alert('Thêm quản trị viên thất bại !')
         });
 

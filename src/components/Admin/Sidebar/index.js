@@ -11,12 +11,7 @@ export default function Sidebar() {
         <aside className="main-sidebar sidebar-dark-primary elevation-4">
 
             <Link to='/Admin' className="font-weight-bold text-center brand-link">DASHBOARD</Link>
-
-
-
             <div className="sidebar">
-
-
                 <nav className="mt-2">
                     <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
@@ -37,7 +32,7 @@ export default function Sidebar() {
                                 showUser
                                     ? <ul className="nav">
                                         <li className="nav-item">
-                                            <Link to='' className="nav-link">
+                                            <Link to='/UserList' className="nav-link">
                                                 <i className="far fa-circle nav-icon" />
                                                 <p>Danh sách người dùng</p>
                                             </Link>

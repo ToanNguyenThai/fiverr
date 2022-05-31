@@ -12,7 +12,7 @@ const rootReducer = (state = initState, action) => {
         case 'logout':
             return {
                 ...state,
-                loginAccount: {}
+                loginAccount: action.payload
             }
         default:
             return state

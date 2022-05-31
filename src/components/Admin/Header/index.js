@@ -1,7 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { actionLogout } from '../../../redux/actions'
 import style from './header.module.css'
 export default function Header() {
+    const dispatch = useDispatch()
     const [showDropList, setShowDropList] = useState(false)
     return (
         <nav className="main-header navbar navbar-expand navbar-white navbar-light">
@@ -33,7 +36,7 @@ export default function Header() {
                         showDropList ?
                             <div className={style.dropList}>
                                 <div className={style.dropList_item}>View Profile</div>
-                                <div className={style.dropList_item}>Sign Out</div>
+                                <div onClick={() => dispatch(actionLogout({}))} className={style.dropList_item}>Sign Out</div>
                             </div>
                             : ''
                     }
