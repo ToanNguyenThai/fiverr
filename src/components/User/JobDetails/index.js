@@ -37,7 +37,7 @@ export default function JobDetails() {
                         <div className={style.navLink}>
                             <Link to='/'>FIVERR </Link>
                             <span className={style.arrow}>{`>`}</span>
-                            <Link className={style.linkName} >{name}</Link>
+                            <Link to={`/JobList/${name}`} className={style.linkName} >{name}</Link>
                             <span className={style.arrow}>{`>`}</span>
                             <Link className={style.linkName} >{jobName}</Link>
                         </div>

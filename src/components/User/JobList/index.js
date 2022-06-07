@@ -12,7 +12,7 @@ export default function JobList() {
     const [job, setJob] = useState([])
 
     useEffect(() => {
-
+        setJob([]) /* Clear dữ liệu cũ trc khi render lại */
         const getJob = async () => {
 
             const result = await axios({
@@ -22,7 +22,7 @@ export default function JobList() {
                     'tokenByClass': tokenByClass
                 }
             })
-
+            console.log(result.data);
             result.data.forEach(item => {
                 setJob(prevArray => [...prevArray, item])
             })
