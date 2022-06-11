@@ -84,7 +84,7 @@ export default function Job() {
                                                     {
                                                         subItem.image !== undefined
                                                             ?
-                                                            <img className={`${style.card_img} card-img-top`} src={subItem.image} alt="Image not found"
+                                                            <img className={`${style.card_img} card-img-top`} src={subItem.image} alt="Image"
                                                             />
                                                             :
                                                             <img className={`${style.card_img} card-img-top`} src={img_forError} alt="Image not found"

@@ -67,6 +67,11 @@
     max-height: 185px;
 }
 
+.star {
+    padding-top: 70px;
+    padding-left: 20px;
+}
+
 .card_text {
     font-size: 17px;
     font-weight: 600;

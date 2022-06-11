@@ -30,9 +30,10 @@ export default function Login() {
                 },
                 data: account
             }).then((response) => {
-                console.log(response.data.user.role);
+
                 if (response.status == 200) {
                     alert('Đăng nhập thành công !')
+                    response.data.user.token = response.data.token /* Thêm 1 field token vào obj user đc trả về */
                     dispatch(actionLogin(response.data.user))
                 }
                 /* history.goBack() */

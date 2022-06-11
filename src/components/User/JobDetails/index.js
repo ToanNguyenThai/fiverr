@@ -1,14 +1,14 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useHistory } from 'react-router-dom'
 import axios from 'axios'
 import { api_url, tokenByClass } from '../../../config'
 import { useSelector } from 'react-redux'
 import style from './jobdetails.module.css'
 export default function JobDetails() {
     let { id, name } = useParams()
-    const userToken = useSelector(state => state.loginAccount)
-    console.log(userToken);
+    const userToken = useSelector(state => state.loginAccount.token)
+    const history = useHistory()
     const [jobName, setJobName] = useState('')
     const [jobDetails, setJobDetails] = useState([])
     useEffect(() => {
@@ -33,27 +33,23 @@ export default function JobDetails() {
     }, [id]); // khi biến name thay đổi thì update lại giao diện
 
     const handleBookJob = () => {
-        // axios({
-        //     method: 'PATCH',
-        //     url: `${api_url}/jobs/booking/${id}`,
-        //     headers: {
-        //         'tokenByClass': tokenByClass
-        //     },
-        //     data: account
-        // }).then((response) => {
-        //     console.log(response.data.user.role);
-        //     if (response.status == 200) {
-        //         alert('Đăng nhập thành công !')
-        //         dispatch(actionLogin(response.data.user))
-        //     }
-        //     /* history.goBack() */
-        //     if (response.data.user.role === 'CLIENT')
-        //         history.push({ pathname: '/' })
-        //     else history.push({ pathname: '/Admin' })
+        axios({
+            method: 'PATCH',
+            url: `${api_url}/jobs/booking/${id}`,
+            headers: {
+                'tokenByClass': tokenByClass,
+                'token': userToken
+            }
+        }).then((response) => {
 
-        // }, (error) => {
-        //     alert('Đăng nhập thất bại !')
-        // });
+            if (response.status == 200) {
+                alert('Đặc thuê công việc thành công !')
+                history.push({ pathname: '/Profile' })
+            }
+
+        }, (error) => {
+            alert('Đặc thuê công việc thất bại !')
+        });
     }
     return (
         <div className={style.jobdetails}>
@@ -74,8 +70,12 @@ export default function JobDetails() {
                     </div>
                     <div className={`${style.right_container} col-5`} >
                         <div className={style.purchase}>
-                            <h3 className={style.price}>{jobDetails.price}$</h3>
-                            <button onClick={() => handleBookJob} className={style.purchase_btn}>Continue ({jobDetails.price}$)</button>
+                            <div className={style.price_section}>
+                                <h4>Today price: </h4>
+                                <span className={style.price}>{jobDetails.price}$</span>
+                            </div>
+
+                            <button onClick={() => handleBookJob()} className={style.purchase_btn}>Continue ({jobDetails.price}$)</button>
                         </div>
                     </div>
                 </div>

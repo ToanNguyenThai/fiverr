@@ -31,7 +31,14 @@ export default function JobList() {
         }
         getJob()
     }, [name]); // khi biến name thay đổi thì update lại giao diện
+    const renderStar = (rating) => {
+        let str = ''
+        for (let i = 1; i <= rating; i++) {
+            str = str + `<div class='star'></div> `
+        }
 
+        return `Rating: ${str}`
+    }
     if (job !== undefined) {
         if (job.length > 0) {
             return (
@@ -56,7 +63,8 @@ export default function JobList() {
                                                 <Link to={`/JobDetails/${name}/${item._id}`}>
                                                     <h5 className={`${style.card_title} card-title`} >{item.name}</h5>
                                                 </Link>
-
+                                                <div className={style.star} dangerouslySetInnerHTML={{ __html: renderStar(item.rating) }}>
+                                                </div>
                                                 <p className={`${style.card_text} card-text`} ></p>
                                                 <div className={style.separate}></div>
                                                 <p className={`${style.card_price} card-text`}>STARTING AT <span className={style.price}>${item.price}</span></p>
