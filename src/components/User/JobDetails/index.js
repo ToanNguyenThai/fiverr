@@ -22,10 +22,7 @@ export default function JobDetails() {
                     'tokenByClass': tokenByClass
                 }
             })
-            console.log(result.data);
-            /* result.data.forEach(item => {
-                setJobDetails(prevArray => [...prevArray, item])
-            }) */
+
             setJobDetails(result.data)
             setJobName(result.data.subType.name)
         }
@@ -33,23 +30,28 @@ export default function JobDetails() {
     }, [id]); // khi biến name thay đổi thì update lại giao diện
 
     const handleBookJob = () => {
-        axios({
-            method: 'PATCH',
-            url: `${api_url}/jobs/booking/${id}`,
-            headers: {
-                'tokenByClass': tokenByClass,
-                'token': userToken
-            }
-        }).then((response) => {
 
-            if (response.status == 200) {
-                alert('Đặc thuê công việc thành công !')
-                history.push({ pathname: '/Profile' })
-            }
+        if (userToken !== undefined) {
+            axios({
+                method: 'PATCH',
+                url: `${api_url}/jobs/booking/${id}`,
+                headers: {
+                    'tokenByClass': tokenByClass,
+                    'token': userToken
+                }
+            }).then((response) => {
 
-        }, (error) => {
-            alert('Đặc thuê công việc thất bại !')
-        });
+                if (response.status == 200) {
+                    alert('Đặc thuê công việc thành công !')
+                    history.push({ pathname: '/Profile' })
+                }
+
+            }, (error) => {
+                alert('Đặc thuê công việc thất bại !')
+            });
+        }
+        else alert("Vui lòng đăng nhập")
+
     }
     return (
         <div className={style.jobdetails}>
