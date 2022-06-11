@@ -29,7 +29,7 @@ function App() {
 					<WithNavbar path='/JobDetails/:name/:id' Component={JobDetails}></WithNavbar>
 					<Nothing path="/Login" exact Component={Login}></Nothing>
 					<Nothing path="/SignUp" exact Component={SignUp}></Nothing>
-					<WithNavbar path='/Profile/:id' Component={Profile}></WithNavbar>
+					<WithNavbar path='/Profile/:name/:id' Component={Profile}></WithNavbar>
 					<Nothing path='/Admin' Component={Admin}></Nothing>
 					<SideAndHeader path='/AddAdmin' Component={AddAdmin}></SideAndHeader>
 					<SideAndHeader path='/UserList' Component={UserList}></SideAndHeader>

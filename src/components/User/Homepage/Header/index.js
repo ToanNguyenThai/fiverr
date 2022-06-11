@@ -55,7 +55,10 @@ export default function Header() {
                                         {
                                             showDropList ?
                                                 <div className={style.dropList}>
-                                                    <div className={style.dropList_item}>View Profile</div>
+                                                    <div className={style.dropList_item}>
+                                                        <Link to={`/Profile/${loginAccount.name}/${loginAccount._id}`} >View Profile</Link >
+
+                                                    </div>
                                                     <div onClick={() => handleLogout()} className={style.dropList_item}>Sign Out</div>
                                                 </div>
                                                 : ''

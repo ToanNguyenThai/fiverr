@@ -187,6 +187,7 @@
     border-top-width: 4px;
 }
 
+.dropList_item a,
 .dropList_item {
     font-weight: 600;
     text-align: right;

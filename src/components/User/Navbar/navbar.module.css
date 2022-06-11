@@ -100,7 +100,8 @@
     border-top-width: 4px;
 }
 
-.dropList_item {
+.dropList_item,
+.dropList_item a {
     font-weight: 600;
     text-align: right;
     color: black;

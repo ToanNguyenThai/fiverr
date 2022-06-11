@@ -18,6 +18,7 @@ export default function SignUp() {
         const account = {
             "first_name": fullName,
             "last_name": fullName,
+            "name": userName,
             "email": email,
             "password": password,
             "phone": phone,
