@@ -1,12 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
 import style from './signup.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import axios from 'axios'
 import { api_url, tokenByClass } from '../../../config'
 import useMediaQuery from '../../../customHooks/useMediaQuery'
 export default function SignUp() {
     const isDesktop = useMediaQuery("(min-width:1140px)");
+    const history = useHistory()
     const [userName, setUserName] = useState('')
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
@@ -15,36 +16,42 @@ export default function SignUp() {
     const [fullName, setFullName] = useState('')
     const handleSubmit = (e) => {
         e.preventDefault()
-        const account = {
-            "first_name": fullName,
-            "last_name": fullName,
-            "name": userName,
-            "email": email,
-            "password": password,
-            "phone": phone,
-            "skill": [],
-            "certification": [],
-            "birthday": "2022-01-01",
-            "gender": true,
-            "type": "CLIENT",
-            "address": "Ho Chi Minh City"
-        }
-        axios({
-            method: 'POST',
-            url: `${api_url}/auth/signup`,
-            headers: {
-                'tokenByClass': tokenByClass
-            },
-            data: account
-        }).then((response) => {
-            if (response.status == 200) {
-                alert('Đăng ký thành công !')
-
+        if (userName.length > 0 && phone.length > 0 && email.length > 0 &&
+            password.length > 0 && fullName.length > 0) {
+            if (password === rePassword) {
+                const account = {
+                    "first_name": fullName,
+                    "last_name": fullName,
+                    "name": userName,
+                    "email": email,
+                    "password": password,
+                    "phone": phone,
+                    "skill": [],
+                    "certification": [],
+                    "birthday": "2022-01-01",
+                    "gender": true,
+                    "type": "CLIENT",
+                    "address": "Ho Chi Minh City"
+                }
+                axios({
+                    method: 'POST',
+                    url: `${api_url}/auth/signup`,
+                    headers: {
+                        'tokenByClass': tokenByClass
+                    },
+                    data: account
+                }).then((response) => {
+                    if (response.status == 201) {
+                        alert('Đăng ký thành công !')
+                        history.push('/Login')
+                    }
+                }, (error) => {
+                    alert('Đăng ký thất bại !')
+                });
             }
-        }, (error) => {
-            alert('Đăng ký thất bại !')
-        });
-
+            else alert('Mật khẩu không trùng')
+        }
+        else alert('Vui lòng nhập đầy đủ thông tin')
     }
     return (
 
