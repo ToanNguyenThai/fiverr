@@ -5,6 +5,14 @@ import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { actionLogout } from '../../../../redux/actions'
 import { useHistory } from 'react-router-dom'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Autoplay } from 'swiper';
+import { carousel_data } from './carousel_data'
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+SwiperCore.use([Autoplay]) /* config autoplay */
 export default function Header() {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -15,11 +23,32 @@ export default function Header() {
         dispatch(actionLogout({}))
         history.push({ pathname: '/Login' })
     }
+
+
+
     return (
         <>
 
             <div className={style.Header}>
-                <div className='container'>
+                <Swiper
+                    autoplay={{
+                        delay: 2000
+                    }}
+                    loop={true}
+                    slidesPerView={1}
+
+                >
+                    {
+                        carousel_data.map(item => (
+                            <SwiperSlide key={item.id}>
+                                <img className={style.carousel_img} src={item.url}></img>
+
+
+                            </SwiperSlide>
+                        ))
+                    }
+                </Swiper>
+                <div className={`${style.carousel_content} container`} >
 
                     <div className={`${style.nav} d-flex justify-content-between align-items-center`}>
                         <Link className={style.logo} to='/'>
@@ -72,9 +101,6 @@ export default function Header() {
 
 
                     </div>
-
-
-
 
                     <div className={style.action}>
                         <h1 className={style.text}>Find the perfect <span className={style.text_italic}> <i>freelance</i></span>  <br></br> services for your business</h1>

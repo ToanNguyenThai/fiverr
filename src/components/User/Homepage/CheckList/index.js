@@ -1,16 +1,29 @@
 import React from 'react'
+import { useState } from 'react';
 import style from './checklist.module.css'
 import { library } from "@fortawesome/fontawesome-svg-core";
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle } from '@fortawesome/free-regular-svg-icons'
 import videoBG from '../../../../img/homepage/videoBG.webp'
 import playBtn from '../../../../img/homepage/playBtn.png'
+import VideoModal from "./VideoModal";
 library.add(faCheckCircle);
 
 export default function CheckList() {
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const modalIsClose = (value) => {
+        console.log(value);
+        setModalIsOpen(value);
+    };
     return (
+
+
         <div className={style.checkList}>
+            <VideoModal
+                modalIsOpen={modalIsOpen}
+                modalIsClose={modalIsClose}
+                src='https://fiverr-res.cloudinary.com/video/upload/t_fiverr_hd/vmvv3czyk2ifedefkau7'
+            ></VideoModal>
             <div className='container'>
                 <div className={`${style.content}`}>
                     <div className='row'>
@@ -65,7 +78,7 @@ export default function CheckList() {
                         </div>
                         <div className='col-7'>
                             <img src={videoBG} className={style.videoBG}></img>
-                            <img src={playBtn} className={style.playBtn}></img>
+                            <img onClick={() => setModalIsOpen(true)} src={playBtn} className={style.playBtn}></img>
                         </div>
                     </div>
                 </div>
