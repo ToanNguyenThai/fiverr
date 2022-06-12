@@ -83,7 +83,7 @@ export default function Navbar() {
                                 </ul>
                                 :
                                 <ul className={`${style.nav_list} d-flex align-items-center`}>
-                                    <li className={style.nav_list_item}>Welcome back, {loginAccount.phone}</li>
+                                    <li className={style.nav_list_item}>Welcome back, <span style={{ color: 'var(--main-color)' }}>{loginAccount.name}</span></li>
                                     <li onClick={() => setShowDropList(!showDropList)} className={`${style.nav_list_item} ${style.avatar_area}`}>
                                         {
                                             loginAccount.avatar !== undefined

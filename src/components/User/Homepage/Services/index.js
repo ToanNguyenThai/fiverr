@@ -18,10 +18,7 @@ export default function Services() {
                         modules={[Navigation, Pagination, Scrollbar, A11y]}
                         spaceBetween={40}
                         slidesPerView={4}
-                        /*      onSlideChange={() => console.log('slide change')}
-                             onSwiper={(swiper) => console.log(swiper)} */
                         navigation
-                    /*    pagination={{ clickable: true }} */
 
                     >
                         {

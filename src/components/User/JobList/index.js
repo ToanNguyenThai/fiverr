@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import style from './joblist.module.css'
 import axios from 'axios'
 import { api_url, tokenByClass } from '../../../config'
-
+import bookcover from '../../../img/homepage/bookcover.webp'
 
 export default function JobList() {
     let { name } = useParams()
@@ -58,7 +58,13 @@ export default function JobList() {
 
                                     <div className='col-4'>
                                         <div className={`${style.card} card`} >
-                                            <img className={`${style.card_img} card-img-top`} src={item.image} alt="Card image cap" />
+                                            <>
+                                                {
+                                                    item.image !== undefined
+                                                        ? <img className={`${style.card_img} card-img-top`} src={item.image} alt="Card image cap" />
+                                                        : <img className={`${style.card_img} card-img-top`} src={bookcover} alt="Card image cap" />
+                                                }
+                                            </>
                                             <div className={`${style.card_body} card-body`}>
                                                 <Link to={`/JobDetails/${name}/${item._id}`}>
                                                     <h5 className={`${style.card_title} card-title`} >{item.name}</h5>
@@ -68,7 +74,7 @@ export default function JobList() {
                                                 <p className={`${style.card_text} card-text`} ></p>
                                                 <div className={style.separate}></div>
                                                 <p className={`${style.card_price} card-text`}>STARTING AT <span className={style.price}>${item.price}</span></p>
-
+                                                {/*      <button className={style.book_btn}></button> */}
                                             </div>
 
                                         </div>

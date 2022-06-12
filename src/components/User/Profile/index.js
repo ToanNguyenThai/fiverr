@@ -9,8 +9,9 @@ import style from './profile.module.css'
 
 export default function Profile() {
     const user = useSelector(state => state.loginAccount)
-
+    console.log(user);
     const [job, setJob] = useState([])
+
     useEffect(() => {
         const getJob = async () => {
             const result = await axios({
@@ -26,6 +27,7 @@ export default function Profile() {
 
             setJob(result.data.bookingJob)
         }
+
         getJob()
     }, []);
     const renderStar = (rating) => {
@@ -97,7 +99,7 @@ export default function Profile() {
                                         ))
                                     }
                                 </div>
-                                : <div>Chưa có công việc</div>
+                                : <div className={style.jobItem_container}>Empty</div>
                         }
 
                     </div>
