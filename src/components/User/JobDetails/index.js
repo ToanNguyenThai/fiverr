@@ -77,7 +77,7 @@ export default function JobDetails() {
                                 <span className={style.price}>{jobDetails.price}$</span>
                             </div>
 
-                            <button onClick={() => handleBookJob()} className={style.purchase_btn}>Continue ({jobDetails.price}$)</button>
+                            <button onClick={() => handleBookJob()} className={style.purchase_btn}>Purchase ({jobDetails.price}$)</button>
                         </div>
                     </div>
                 </div>

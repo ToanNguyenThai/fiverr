@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
 import { api_url, tokenByClass } from '../../../config'
 import profile from '../../../img/profile.webp'
@@ -54,9 +54,11 @@ export default function UserDetails() {
                             <p className={style.info}> <span className={style.infoLabel}>Số điện thoại: </span> {item.phone}</p>
                             <p className={style.info}> <span className={style.infoLabel}>Email: </span> {item.email}</p>
                             <p className={style.info}> <span className={style.infoLabel}>Chức vụ: </span> {item.role}</p>
+                            <Link to={`/EditUser/${item.name}/${item._id}`} className='btn btn-info' style={{ width: '100%', fontWeight: '600' }}>CHỈNH SỬA</Link>
                         </div>
 
                     ))
+
                 }
 
             </div>

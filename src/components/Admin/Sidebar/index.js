@@ -1,14 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-
 export default function Sidebar() {
     const [showUser, setShowUser] = useState(false)
     const [showDanhMuc, setShowDanhMuc] = useState(false)
     const [showService, setShowService] = useState(false)
     const [showSidebar, setShowSidebar] = useState(true)
     return (
-        <aside className="main-sidebar sidebar-dark-primary elevation-4">
+        <div className="main-sidebar sidebar-dark-primary elevation-4 position-fixed">
 
             <Link to='/Admin' className="font-weight-bold text-center brand-link">DASHBOARD</Link>
             <div className="sidebar">
@@ -126,7 +125,7 @@ export default function Sidebar() {
 
             </div>
 
-        </aside>
+        </div>
 
 
 

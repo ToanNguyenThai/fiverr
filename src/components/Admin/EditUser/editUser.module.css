@@ -1,0 +1,40 @@
+.edit_user {
+    margin-left: 250px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    min-width: 400px;
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px 30px;
+}
+
+.skillItem {
+    padding: 0 5px;
+}
+
+label {
+    margin-top: 15px;
+    display: block;
+    text-align: left;
+    color: #17a2b8;
+}
+
+.infoLabel {
+    color: #17a2b8;
+}
+
+input {
+    width: 100%;
+}
+
+.info {
+    display: inline;
+}

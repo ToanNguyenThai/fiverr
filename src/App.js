@@ -7,9 +7,10 @@ import Login from './components/User/Login';
 import SignUp from './components/User/SignUp';
 import Profile from './components/User/Profile';
 import Admin from './components/Admin';
-import AddAdmin from './components/Admin/AddAdmin';
+import AddAdmin from './components/Admin/AddAdmin/';
 import UserList from './components/Admin/UserList';
-import UserDetails from './components/Admin/UserDetails';
+import UserDetails from './components/Admin/UserDetails/';
+import EditUser from './components/Admin/EditUser';
 import { WithNavbar } from './RouteTemplate/UserNavbar/WithNavbar';
 import { WithoutNavbar } from './RouteTemplate/UserNavbar/WithoutNavbar';
 import { Nothing } from './RouteTemplate/UserNavbar/Nothing';
@@ -36,6 +37,7 @@ function App() {
 					<SideAndHeader path='/AddAdmin' Component={AddAdmin}></SideAndHeader>
 					<SideAndHeader path='/UserList' Component={UserList}></SideAndHeader>
 					<SideAndHeader path='/UserDetails/:name/:id' Component={UserDetails}></SideAndHeader>
+					<SideAndHeader path='/EditUser/:name/:id' Component={EditUser}></SideAndHeader>
 				</Switch>
 			</Router>
 
